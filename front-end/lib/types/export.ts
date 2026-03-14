@@ -2,7 +2,7 @@
 // Converts a BusRiskReport into a downloadable CSV string and triggers a browser download.
 // Pure utility — no React, no DOM reads, just string construction.
 
-import type { BusRiskDetails, BusRiskReport } from "./types";
+import type { BusRiskDetails, BusRiskReport } from "../types";
 
 // ── CSV building ──────────────────────────────────────────────────────────────
 

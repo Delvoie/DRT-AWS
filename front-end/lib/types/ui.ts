@@ -11,7 +11,7 @@ import {
   type BusRiskReport,
   type FilterState,
   type RiskFilterValue,
-} from "./types.js";
+} from "../types.js";
 
 // ── Selector helpers ──────────────────────────────────────────────────────────
 

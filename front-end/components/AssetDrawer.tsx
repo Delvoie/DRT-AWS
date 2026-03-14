@@ -5,8 +5,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { BusRiskDetails } from "@/lib/types";
-import { DataFreshness, RiskLevel } from "@/lib/types";
+import type { BusRiskDetails } from "@/lib/types/";
+import { DataFreshness, RiskLevel } from "@/lib/types/";
 import { RiskBadge } from "./RiskBadge";
 
 interface Props {
