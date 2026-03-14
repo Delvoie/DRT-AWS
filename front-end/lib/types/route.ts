@@ -3,7 +3,7 @@
 // Parses them in-memory and returns a full BusRiskReport — nothing is written to disk.
 
 import { NextRequest, NextResponse } from "next/server";
-import { buildBusRiskReport } from "@/lib/risk";
+import { buildBusRiskReport } from "@/lib/types/";
 import type { BusRiskReport } from "@/lib/types";
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024; // 5 MB per file

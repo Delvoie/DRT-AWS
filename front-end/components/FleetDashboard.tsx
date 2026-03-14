@@ -9,7 +9,7 @@
 import { useCallback, useState } from "react";
 import { useFleetReport } from "@/hooks/useFleetReport";
 import { useFleetFilters } from "@/hooks/useFleetFilters";
-import { exportReport } from "@/lib/export";
+import { exportReport } from "@/lib/types/export";
 import type { BusRiskDetails, BusRiskReport } from "@/lib/types";
 
 import { FleetSummaryCards } from "./FleetSummaryCards";
@@ -17,7 +17,6 @@ import { DepotBreakdown } from "./DepotBreakdown";
 import { FilterBar } from "./FilterBar";
 import { RiskTable } from "./RiskTable";
 import { AssetDrawer } from "./AssetDrawer";
-import { CSVUploadPanel } from "./CSVUploadPanel";
 
 export function FleetDashboard() {
   const { report: serverReport, status, error, refresh } = useFleetReport();
@@ -94,9 +93,10 @@ export function FleetDashboard() {
             </header>
 
             <div className="space-y-5 p-6">
-              {showUpload && (
-                <CSVUploadPanel onReportReady={handleUploadReady} />
-              )}
+              {showUpload
+                // <CSVUploadPanel onReportReady={handleUploadReady} />
+              
+              }
 
               {status === "error" && error && !uploadedReport && (
                 <div className="rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
