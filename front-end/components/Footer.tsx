@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinks } from "./navbar";
 
-const techStack = ["Next.js", "TypeScript", "Tailwind", "Vercel"];
+const techStack = ["Next.js", "TypeScript", "Tailwind", "AWS"];
 
 const sponsors = [
   {
