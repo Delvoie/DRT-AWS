@@ -103,7 +103,7 @@ export default function About() {
     </div>
 
     {/* Right: QR Code */}
-    <div className="flex flex-col items-center gap-3 shrink-0">
+    <div className="flex flex-col items-center  shrink-0">
       <div className="bg-white p-3">
         <Image
           src="/data/assets/QrCode.svg"
