@@ -153,7 +153,7 @@ export function resolveTags(
     : Infinity;
 
   const daysToOrder = orderByDate
-    ? Math.ceil((orderByDate.getTime() - snapshotDate.getTime()) / 86_400_000)
+    ? Math.ceil((new Date(orderByDate).getTime() - new Date(snapshotDate).getTime()) / 86_400_000)
     : Infinity;
 
   const kmUsed = Math.max(0, currentOdometerKm - lastReplacedKm);
@@ -268,7 +268,7 @@ export function buildPartHealthRecord(
 
   const installDate = lastEntry?.completedDate ?? lastEntry?.scheduledDate ?? null;
   const daysInService = installDate
-    ? Math.max(0, Math.round((snapshotDate.getTime() - installDate.getTime()) / 86_400_000))
+    ? Math.max(0, Math.round((new Date(snapshotDate).getTime() - new Date(installDate).getTime()) / 86_400_000))
     : Math.round(Math.max(0, currentOdometerKm - lastReplacedKm) / 200); // ~200 km/day
 
   const seasonalMultiplier = getSeasonalMultiplier(spec.category, snapshotDate);
@@ -287,7 +287,7 @@ export function buildPartHealthRecord(
   const projectedFailureDate = projectFailureDate(currentOdometerKm, lastReplacedKm, spec.expectedLifeKm, spec.expectedLifeDays, daysInService, seasonalMultiplier);
 
   const orderByDate = projectedFailureDate
-    ? new Date(projectedFailureDate.getTime() - LEAD_TIME_DAYS * 86_400_000)
+    ? new Date(new Date(projectedFailureDate).getTime() - LEAD_TIME_DAYS * 86_400_000)
     : null;
 
   const tags = resolveTags(
