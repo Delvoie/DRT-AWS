@@ -7,9 +7,8 @@
 
 import { useState, useCallback } from "react";
 import { generateMockBusRecords } from "@/lib/mockData";
-import { RiskLevel, ServiceLevel, GarageLocation, type BusRecord } from "@/lib/types";
+import { RiskLevel, type BusRecord } from "@/lib/types";
 import { RiskBadge, ServiceBadge, StatusBadge, Button, SectionHeader } from "@/components/PartsInventory/ui";
-import { MaintenanceStatus } from "@/lib/types";
 
 export function MockDataPanel() {
   const [buses, setBuses] = useState<BusRecord[]>([]);
@@ -18,11 +17,25 @@ export function MockDataPanel() {
   const [selectedBus, setSelectedBus] = useState<BusRecord | null>(null);
   const [filterRisk, setFilterRisk] = useState<RiskLevel | "ALL">("ALL");
 
-  const generate = useCallback(() => {
+  const generate = useCallback(async () => {
     const fresh = generateMockBusRecords();
     setBuses(fresh);
     setGenerated(true);
     setSelectedBus(null);
+
+    // Trigger SNS alerts based on the new data
+    try {
+      console.log("[MockDataPanel] Triggering predictive alerts...");
+      const response = await fetch("/api/predictive-alerts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ buses: fresh }),
+      });
+      const result = await response.json();
+      console.log("[MockDataPanel] Alerts response:", result);
+    } catch (error) {
+      console.error("[MockDataPanel] Failed to trigger alerts:", error);
+    }
   }, []);
 
   const downloadJson = useCallback(() => {
