@@ -3,12 +3,17 @@ import { BusRecord } from "@/lib/types";
 import { buildBusHealthRecords } from "./healthEngine";
 import { PartHealthRecord } from "@/lib/types/predictive";
 
-const SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:950724106216:BusFlagAlerts";
-const region = "us-east-1";
+const SNS_TOPIC_ARN = process.env.SNS_TOPIC_ARN || "arn:aws:sns:us-east-1:950724106216:BusFlagAlerts";
+const region = process.env.APP_REGION || "us-east-1";
 
-// AWS Credentials should be provided via environment variables:
-// AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
-const snsClient = new SNSClient({ region });
+// AWS Credentials provided via the new naming scheme:
+const snsClient = new SNSClient({ 
+  region,
+  credentials: {
+    accessKeyId: process.env.APP_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.APP_SECRET_ACCESS_KEY || "",
+  }
+});
 
 export async function processFleetAlerts(buses: BusRecord[]) {
   console.log(`[NotificationEngine] Processing alerts for ${buses.length} buses...`);
