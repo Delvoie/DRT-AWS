@@ -2,8 +2,8 @@
 "use client";
 
 import { GarageLocation } from "@/lib/types";
-import { KpiCard } from "@/components/ui";
-import type { UseBusListResult } from "@/hooks";
+import { KpiCard } from "@/components/PartsInventory/ui";
+import type { UseBusListResult } from "@/hooks/useBusDashboard";
 
 export function FleetOverview({ listData }: { listData: UseBusListResult }) {
   const { summary, isLoading } = listData;

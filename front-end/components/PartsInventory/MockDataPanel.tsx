@@ -8,7 +8,7 @@
 import { useState, useCallback } from "react";
 import { generateMockBusRecords } from "@/lib/mockData";
 import { RiskLevel, ServiceLevel, GarageLocation, type BusRecord } from "@/lib/types";
-import { RiskBadge, ServiceBadge, StatusBadge, Button, SectionHeader } from "@/components/ui";
+import { RiskBadge, ServiceBadge, StatusBadge, Button, SectionHeader } from "@/components/PartsInventory/ui";
 import { MaintenanceStatus } from "@/lib/types";
 
 export function MockDataPanel() {

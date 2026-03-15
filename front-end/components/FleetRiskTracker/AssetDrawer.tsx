@@ -51,9 +51,9 @@ function Field({ label, value, accent }: { label: string; value: React.ReactNode
 function RiskMeter({ ratio, level }: { ratio: number; level: RiskLevel }) {
   const pct = Math.min(100, Math.round(ratio * 100));
   const fill =
-    level === RiskLevel.CRITICAL
+    level === RiskLevel.Critical
       ? "bg-red-500"
-      : level === RiskLevel.WARNING
+      : level === RiskLevel.Warning
       ? "bg-amber-500"
       : "bg-emerald-500";
 

@@ -4,12 +4,12 @@
 import { useState } from "react";
 import type { BusRecord, MaintenanceEntry } from "@/lib/types";
 import { useBusList, useBusDetail, useMaintenanceForm, useUpdateForm } from "@/hooks";
-import { BusList }              from "@/components/bus/BusList";
-import { BusDetailPanel }       from "@/components/bus/BusDetailPanel";
-import { FleetOverview }        from "@/components/bus/FleetOverview";
-import { MaintenanceEntryForm } from "@/components/forms/MaintenanceEntryForm";
-import { MockDataPanel }        from "@/components/mock/MockDataPanel";
-import { Modal }                from "@/components/Modal";
+import { BusList }              from "@/components/PartsInventory/BusList";
+import { BusDetailPanel }       from "@/components/PartsInventory/BusDetailPanel";
+import { FleetOverview }        from "@/components/PartsInventory/FleetOverview";
+import { MaintenanceEntryForm } from "@/components/PartsInventory/MaintenanceEntryForm";
+import { MockDataPanel }        from "@/components/PartsInventory/MockDataPanel";
+import { Modal }                from "@/components/PartsInventory/Modal";
 
 type ModalMode = "new" | "edit" | null;
 type AppView   = "dashboard" | "mock";

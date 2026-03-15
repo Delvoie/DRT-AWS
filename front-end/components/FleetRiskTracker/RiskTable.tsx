@@ -43,9 +43,9 @@ const COLUMNS: ColDef[] = [
 
 function riskRank(level: RiskLevel): number {
   switch (level) {
-    case RiskLevel.CRITICAL: return 3;
-    case RiskLevel.WARNING:  return 2;
-    case RiskLevel.STABLE:   return 1;
+    case RiskLevel.Critical: return 3;
+    case RiskLevel.Warning:  return 2;
+    case RiskLevel.Stable:   return 1;
   }
 }
 

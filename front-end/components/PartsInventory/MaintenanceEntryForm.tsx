@@ -8,8 +8,8 @@ import {
 import {
   Field, Input, Select, Textarea, Button,
   AutofillWarningBanner,
-} from "@/components/ui";
-import type { UseMaintenanceFormResult } from "@/hooks";
+} from "@/components/PartsInventory/ui";
+import type { UseMaintenanceFormResult } from "@/hooks/useBusDashboard";
 
 interface Props {
   formData:  UseMaintenanceFormResult;

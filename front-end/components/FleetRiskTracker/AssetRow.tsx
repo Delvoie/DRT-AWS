@@ -29,9 +29,9 @@ function formatDelta(delta: number | null): string {
 }
 
 const ROW_BG: Record<RiskLevel, string> = {
-  [RiskLevel.CRITICAL]: "bg-red-50/60",
-  [RiskLevel.WARNING]:  "bg-amber-50/50",
-  [RiskLevel.STABLE]:   "",
+  [RiskLevel.Critical]: "bg-red-50/60",
+  [RiskLevel.Warning]:  "bg-amber-50/50",
+  [RiskLevel.Stable]:   "",
 };
 
 export const AssetRow = memo(function AssetRow({ asset, index, onSelect }: Props) {

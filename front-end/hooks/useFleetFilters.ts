@@ -59,7 +59,7 @@ export function useFleetFilters(
 
 export const RISK_FILTER_OPTIONS: { value: RiskFilterValue; label: string }[] = [
   { value: "ALL", label: "All Risk Levels" },
-  { value: RiskLevel.CRITICAL, label: "Critical" },
-  { value: RiskLevel.WARNING, label: "Warning" },
-  { value: RiskLevel.STABLE, label: "Stable" },
+  { value: RiskLevel.Critical, label: "Critical" },
+  { value: RiskLevel.Warning, label: "Warning" },
+  { value: RiskLevel.Stable, label: "Stable" },
 ];

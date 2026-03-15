@@ -7,8 +7,8 @@ import { getPartsForServiceLevel, getSpecForAlias } from "@/lib/partsCatalogue";
 import {
   RiskBadge, ServiceBadge, StatusBadge, OdometerBar,
   SectionHeader, KpiCard, EmptyState, Button
-} from "@/components/ui";
-import type { UseBusDetailResult } from "@/hooks";
+} from "@/components/PartsInventory/ui";
+import type { UseBusDetailResult } from "@/hooks/useBusDashboard";
 
 type Tab = "overview" | "parts" | "history";
 

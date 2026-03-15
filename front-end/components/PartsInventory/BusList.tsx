@@ -2,8 +2,8 @@
 "use client";
 
 import { GarageLocation, RiskLevel, ServiceLevel, type BusRecord } from "@/lib/types";
-import { RiskBadge, ServiceBadge, OdometerBar, Skeleton, EmptyState } from "@/components/ui";
-import type { UseBusListResult } from "@/hooks";
+import { RiskBadge, ServiceBadge, OdometerBar, Skeleton, EmptyState } from "@/components/PartsInventory/ui";
+import type { UseBusListResult } from "@/hooks/useBusDashboard";
 
 interface Props {
   listData:      UseBusListResult;

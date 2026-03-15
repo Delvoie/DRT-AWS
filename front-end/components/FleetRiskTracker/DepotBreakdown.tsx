@@ -16,9 +16,9 @@ interface BarSegmentProps {
 }
 
 const SEGMENT_STYLES: Record<RiskLevel, { bg: string; label: string }> = {
-  [RiskLevel.CRITICAL]: { bg: "bg-red-500",    label: "Critical" },
-  [RiskLevel.WARNING]:  { bg: "bg-amber-400",  label: "Warning"  },
-  [RiskLevel.STABLE]:   { bg: "bg-emerald-500", label: "Stable"  },
+  [RiskLevel.Critical]: { bg: "bg-red-500",    label: "Critical" },
+  [RiskLevel.Warning]:  { bg: "bg-amber-400",  label: "Warning"  },
+  [RiskLevel.Stable]:   { bg: "bg-emerald-500", label: "Stable"  },
 };
 
 function BarSegment({ count, total, level }: BarSegmentProps) {
@@ -52,9 +52,9 @@ function DepotRow({ depot }: { depot: DepotRiskSummary }) {
 
       {/* Stacked bar */}
       <div className="flex h-6 w-full overflow-hidden rounded-lg bg-stone-100">
-        <BarSegment count={depot.critical} total={total} level={RiskLevel.CRITICAL} />
-        <BarSegment count={depot.warning}  total={total} level={RiskLevel.WARNING}  />
-        <BarSegment count={depot.stable}   total={total} level={RiskLevel.STABLE}   />
+        <BarSegment count={depot.critical} total={total} level={RiskLevel.Critical} />
+        <BarSegment count={depot.warning}  total={total} level={RiskLevel.Warning}  />
+        <BarSegment count={depot.stable}   total={total} level={RiskLevel.Stable}   />
       </div>
 
       {/* Legend pills */}
