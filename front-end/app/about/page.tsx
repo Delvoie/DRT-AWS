@@ -13,7 +13,7 @@ const team = [
     initials: "LD",
     name: "Lucas Delvoie",
     role: "UI / UX Designer",
-    tags: ["Figma", "Tailwind"],
+    tags: ["Deployment", "Tailwind"],
   },
   {
     initials: "BB",
@@ -28,31 +28,31 @@ const timeline = [
   { time: "03:00", label: "Architecture", desc: "Stack chosen. Repo initialized. Coffee acquired." },
   { time: "09:00", label: "Core build", desc: "Fleet dashboard, live map, and data pipeline." },
   { time: "20:00", label: "Polish", desc: "UI refinement, mobile breakpoints, edge cases." },
-  { time: "34:00", label: "Submission", desc: "Deployed to Vercel. Demo rehearsed." },
+  { time: "34:00", label: "Submission", desc: "Deployed to AWS. Demo rehearsed." },
   { time: "36:00", label: "Presentation", desc: "Live demo to judges and sponsors." },
 ];
 
 const stats = [
-  { value: "36", unit: "hrs", label: "Build time" },
+  { value: "26", unit: "hrs", label: "Build time" },
   { value: "3", unit: "devs", label: "Team size" },
-  { value: "847", unit: "commits", label: "Git commits" },
+  { value: "40+", unit: "commits", label: "Git commits" },
   { value: "∞", unit: "cups", label: "Coffee consumed" },
 ];
 
 const sponsors = [
   {
     name: "Ajax Pickering Board of Trade",
-    logo: "/sponsors/apbot-logo.svg",
+    logo: "/data/assets/ajaxlogo.webp",
     desc: "Supporting local innovation and entrepreneurship across Durham Region.",
   },
   {
     name: "Durham Region Transit",
-    logo: "/sponsors/drt-logo.svg",
+    logo: "/data/assets/drtlogo.svg",
     desc: "Providing real-world fleet data and domain expertise for this project.",
   },
   {
     name: "Durham College Student Association",
-    logo: "/sponsors/dcsa-logo.svg",
+    logo: "/data/assets/dcsa-logo-solid-purple.svg",
     desc: "Empowering students to build solutions that matter for their communities.",
   },
 ];
@@ -73,7 +73,7 @@ export default function About() {
           Hackathon 2026
         </span>
         <span className="text-[9px] text-[#333] uppercase tracking-[0.15em]">
-          36-hour sprint
+          26-hour sprint
         </span>
       </div>
 
@@ -156,11 +156,8 @@ export default function About() {
             { name: "Next.js 14", category: "Framework" },
             { name: "TypeScript", category: "Language" },
             { name: "Tailwind CSS", category: "Styling" },
-            { name: "Vercel", category: "Deployment" },
-            { name: "PostgreSQL", category: "Database" },
-            { name: "Prisma", category: "ORM" },
-            { name: "Mapbox GL", category: "Mapping" },
-            { name: "Recharts", category: "Charts" },
+            { name: "AWS Amplify", category: "Deployment" },
+            { name: "CSV, JSON", category: "Database" },
           ].map(({ name, category }) => (
             <div key={name} className="bg-[#111] border border-[#1e1e1e] p-4">
               <span className="text-[9px] text-[#333] uppercase">{category}</span>
@@ -216,47 +213,6 @@ export default function About() {
 
       </section>
 
-{/* Sponsors */}
-<section className="px-6 py-16 max-w-7xl mx-auto">
-  <div className="flex items-center gap-4 mb-10">
-    <span className="text-[9px] uppercase text-[#333]">Presented by</span>
-    <div className="flex-1 h-px bg-[#1e1e1e]" />
-  </div>
-
-  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-    {sponsors.map(({ name, logo, desc }) => (
-      <div
-        key={name}
-        className="bg-[#111] border border-[#1e1e1e] p-6 flex flex-col gap-4"
-      >
-        <div className="h-12 flex items-center justify-start">
-          <Image    
-            src={logo}
-            alt={name}
-            width={180}
-            height={48}
-            className="max-h-full max-w-full object-contain opacity-60"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-              const fallback = e.currentTarget.nextElementSibling as HTMLDivElement | null;
-              if (fallback) fallback.style.display = "flex";
-            }}
-          />
-          <div
-            className="hidden h-12 w-full border border-dashed border-[#1e1e1e] bg-[#0a0a0a] items-center justify-center"
-          >
-            <span className="text-[9px] text-[#222] uppercase tracking-widest">
-              {name}
-            </span>
-          </div>
-        </div>
-
-        <div className="text-[11px] font-semibold text-white">{name}</div>
-        <div className="text-[11px] text-[#444] leading-relaxed">{desc}</div>
-      </div>
-    ))}
-  </div>
-</section>
 
 
     </main>
