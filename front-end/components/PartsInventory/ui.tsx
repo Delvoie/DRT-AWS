@@ -4,6 +4,8 @@
 // Industrial/utilitarian aesthetic — dense data, clear hierarchy.
 // ─────────────────────────────────────────────────────────────────────────────
 
+"use client";
+
 import { RiskLevel, MaintenanceStatus, ServiceLevel } from "@/lib/types";
 
 // ── Risk badge ────────────────────────────────────────────────────────────────

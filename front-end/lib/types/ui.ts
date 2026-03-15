@@ -43,9 +43,9 @@ function formatDelta(delta: number | null): string {
 
 function riskBadgeHtml(level: RiskLevel, label: string): string {
   const classMap: Record<RiskLevel, string> = {
-    [RiskLevel.CRITICAL]: "badge badge-critical",
-    [RiskLevel.WARNING]: "badge badge-warning",
-    [RiskLevel.STABLE]: "badge badge-stable",
+    [RiskLevel.Critical]: "badge badge-critical",
+    [RiskLevel.Warning]: "badge badge-warning",
+    [RiskLevel.Stable]: "badge badge-stable",
   };
   return `<span class="${classMap[level]}">${level}</span><br><span class="label-sub">${label}</span>`;
 }
@@ -188,9 +188,9 @@ export function filterAssets(
 function isRiskFilterValue(value: string): value is RiskFilterValue {
   return (
     value === "ALL" ||
-    value === RiskLevel.CRITICAL ||
-    value === RiskLevel.WARNING ||
-    value === RiskLevel.STABLE
+    value === RiskLevel.Critical ||
+    value === RiskLevel.Warning ||
+    value === RiskLevel.Stable
   );
 }
 
