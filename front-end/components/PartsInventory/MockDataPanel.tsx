@@ -39,18 +39,6 @@ export function MockDataPanel() {
     }
   }, []);
 
-  const sendSnsTest = useCallback(async () => {
-    try {
-      const response = await fetch("/api/predictive-alerts/test", {
-        method: "POST",
-      });
-      const result = await response.json();
-      console.log("[MockDataPanel] SNS test response:", result);
-    } catch (error) {
-      console.error("[MockDataPanel] SNS test failed:", error);
-    }
-  }, []);
-
   const downloadJson = useCallback(() => {
     const data = JSON.stringify(buses, null, 2);
     const blob = new Blob([data], { type: "application/json" });
@@ -102,9 +90,6 @@ export function MockDataPanel() {
       <div className="flex flex-wrap items-center gap-3">
         <Button variant="primary" onClick={generate}>
           ⟳ Generate Fresh Data
-        </Button>
-        <Button variant="danger" onClick={sendSnsTest}>
-          SNS Test
         </Button>
         {generated && (
           <>
