@@ -141,7 +141,7 @@ export function Skeleton({ className = "" }: { className?: string }) {
 export function Field({
   label, error, required, children,
 }: {
-  label: string; error?: string; required?: boolean; children: React.ReactNode;
+  label: string; error?: string | undefined ; required?: boolean; children: React.ReactNode;
 }) {
   return (
     <div className="space-y-1">
