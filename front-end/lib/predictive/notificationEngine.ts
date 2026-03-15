@@ -4,19 +4,15 @@ import { buildBusHealthRecords } from "./healthEngine";
 import { PartHealthRecord } from "@/lib/types/predictive";
 
 const SNS_TOPIC_ARN = process.env.SNS_TOPIC_ARN || "arn:aws:sns:us-east-1:950724106216:newbus";
-const getSnsClient = () => {
-  const region = process.env.APP_REGION || "us-east-1";
-  return new SNSClient({ 
-    region,
-    credentials: {
-      accessKeyId: process.env.APP_ACCESS_KEY_ID || "",
-      secretAccessKey: process.env.APP_SECRET_ACCESS_KEY || "",
-    }
-  });
-};
+const region = process.env.AWS_REGION || process.env.APP_REGION || "us-east-1";
+
+function getSnsClient() {
+  return new SNSClient({ region });
+}
 
 export async function processFleetAlerts(buses: BusRecord[]) {
   console.log(`[NotificationEngine] Processing alerts for ${buses.length} buses...`);
+  console.log(`[NotificationEngine] Publishing to ${SNS_TOPIC_ARN} in ${region}`);
 
   const allRecords: PartHealthRecord[] = buses.flatMap(bus => buildBusHealthRecords(bus));
   

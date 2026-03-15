@@ -3,8 +3,8 @@ import { processFleetAlerts } from "@/lib/predictive/notificationEngine";
 import { BusRecord } from "@/lib/types";
 
 console.log("[DEBUG] SNS_TOPIC_ARN:", process.env.SNS_TOPIC_ARN);
-console.log("[DEBUG] APP_ACCESS_KEY_ID:", process.env.APP_ACCESS_KEY_ID ? "SET" : "MISSING");
-console.log("[DEBUG] APP_SECRET_ACCESS_KEY:", process.env.APP_SECRET_ACCESS_KEY ? "SET" : "MISSING");
+console.log("[DEBUG] AWS_REGION:", process.env.AWS_REGION || process.env.APP_REGION || "MISSING");
+console.log("[DEBUG] AWS_ACCESS_KEY_ID:", process.env.AWS_ACCESS_KEY_ID ? "SET" : "MISSING");
 
 export async function POST(req: NextRequest) {
   try {
