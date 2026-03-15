@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { processFleetAlerts } from "@/lib/predictive/notificationEngine";
 import { BusRecord } from "@/lib/types";
+import { generateMockBusRecords } from "@/lib/mockData";
 
 console.log("[DEBUG] SNS_TOPIC_ARN:", process.env.SNS_TOPIC_ARN);
 console.log("[DEBUG] AWS_REGION:", process.env.AWS_REGION || process.env.APP_REGION || "MISSING");
@@ -9,10 +10,19 @@ console.log("[DEBUG] APP_ACCESS_KEY_ID:", process.env.APP_ACCESS_KEY_ID ? "SET" 
 
 export async function POST(req: NextRequest) {
   try {
-    const { buses } = await req.json() as { buses: BusRecord[] };
-    
-    if (!buses || !Array.isArray(buses)) {
-      return NextResponse.json({ error: "Invalid buses data" }, { status: 400 });
+    let buses: BusRecord[] = [];
+
+    try {
+      const body = await req.json() as { buses?: BusRecord[] } | null;
+      if (body?.buses && Array.isArray(body.buses)) {
+        buses = body.buses;
+      }
+    } catch {
+      buses = [];
+    }
+
+    if (!buses.length) {
+      buses = generateMockBusRecords();
     }
 
     console.log(`[API PredictiveAlerts] Calling processFleetAlerts with ${buses.length} buses...`);

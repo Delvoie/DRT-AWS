@@ -30,7 +30,7 @@ export function MockDataPanel() {
       const response = await fetch("/api/predictive-alerts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ buses: fresh }),
+        body: JSON.stringify({ trigger: "mock-data-refresh" }),
       });
       const result = await response.json();
       console.log("[MockDataPanel] Alerts response:", result);
