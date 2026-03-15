@@ -97,7 +97,7 @@ export default function PartsInventory() {
             {/* ── Two-pane layout ─────────────────────────────── */}
             <div className="flex min-h-0 flex-1 overflow-hidden">
               {/* Left: bus list */}
-              <div className="w-72 shrink-0 overflow-hidden border-r border-stone-200">
+              <div className="">
                 <BusList
                   listData={listData}
                   selectedAlias={selectedAlias}
