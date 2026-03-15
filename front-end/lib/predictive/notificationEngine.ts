@@ -3,17 +3,17 @@ import { BusRecord } from "@/lib/types";
 import { buildBusHealthRecords } from "./healthEngine";
 import { PartHealthRecord } from "@/lib/types/predictive";
 
-const SNS_TOPIC_ARN = process.env.SNS_TOPIC_ARN || "arn:aws:sns:us-east-1:950724106216:newbus:3274a5ef-f0c3-479a-8ea7-b11f429ba77b";
-const region = process.env.APP_REGION || "us-east-1";
-
-// AWS Credentials provided via the new naming scheme:
-const snsClient = new SNSClient({ 
-  region,
-  credentials: {
-    accessKeyId: process.env.APP_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.APP_SECRET_ACCESS_KEY || "",
-  }
-});
+const SNS_TOPIC_ARN = process.env.SNS_TOPIC_ARN || "arn:aws:sns:us-east-1:950724106216:newbus";
+const getSnsClient = () => {
+  const region = process.env.APP_REGION || "us-east-1";
+  return new SNSClient({ 
+    region,
+    credentials: {
+      accessKeyId: process.env.APP_ACCESS_KEY_ID || "",
+      secretAccessKey: process.env.APP_SECRET_ACCESS_KEY || "",
+    }
+  });
+};
 
 export async function processFleetAlerts(buses: BusRecord[]) {
   console.log(`[NotificationEngine] Processing alerts for ${buses.length} buses...`);
@@ -23,12 +23,11 @@ export async function processFleetAlerts(buses: BusRecord[]) {
   const criticalParts = allRecords.filter(r => r.healthPct <= 20);
   const warningParts = allRecords.filter(r => r.healthPct <= 35 && r.healthPct > 20);
 
-  if (criticalParts.length === 0 && warningParts.length === 0) {
-    console.log("[NotificationEngine] No critical or warning parts found. Skipping notification.");
-    return { success: true, message: "No alerts needed" };
-  }
-
-  const subject = `⚡ Predictive Alert: ${criticalParts.length} critical, ${warningParts.length} warning parts`;
+  console.log(`[NotificationEngine] Found ${criticalParts.length} critical and ${warningParts.length} warning parts.`);
+  
+  const subject = criticalParts.length > 0 || warningParts.length > 0
+    ? `⚡ Predictive Alert: ${criticalParts.length} critical, ${warningParts.length} warning parts`
+    : `✅ Predictive Fleet Health: All parts stable`;
   
   let body = `DRT Bus Maintenance - Predictive Alert Summary\n`;
   body += `Generated at: ${new Date().toLocaleString()}\n`;
@@ -50,10 +49,15 @@ export async function processFleetAlerts(buses: BusRecord[]) {
     body += `\n`;
   }
 
+  if (criticalParts.length === 0 && warningParts.length === 0) {
+    body += `All monitored parts are currently within healthy thresholds.\n`;
+  }
+
   body += `──────────────────────────────────────────────────\n`;
   body += `View Detailed Dashboard: https://drt-dashboard.vercel.app/predictive\n`;
 
   try {
+    const snsClient = getSnsClient();
     const command = new PublishCommand({
       TopicArn: SNS_TOPIC_ARN,
       Subject: subject,
@@ -61,6 +65,7 @@ export async function processFleetAlerts(buses: BusRecord[]) {
     });
 
     const response = await snsClient.send(command);
+    console.log("[NotificationEngine] SNS Response:", JSON.stringify(response, null, 2));
     console.log("[NotificationEngine] SNS Notification sent successfully:", response.MessageId);
     return { success: true, messageId: response.MessageId };
   } catch (error) {

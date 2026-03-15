@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid buses data" }, { status: 400 });
     }
 
+    console.log(`[API PredictiveAlerts] Calling processFleetAlerts with ${buses.length} buses...`);
     const result = await processFleetAlerts(buses);
     
     if (result.success) {
