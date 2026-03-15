@@ -10,6 +10,7 @@ import { FleetOverview }        from "@/components/PartsInventory/FleetOverview"
 import { MaintenanceEntryForm } from "@/components/PartsInventory/MaintenanceEntryForm";
 import { MockDataPanel }        from "@/components/PartsInventory/MockDataPanel";
 import { Modal }                from "@/components/PartsInventory/Modal";
+import { PredictiveAlertBanner } from "@/components/Predictive/PredictiveAlertBanner";
 
 type ModalMode = "new" | "edit" | null;
 type AppView   = "dashboard" | "mock";
@@ -53,6 +54,7 @@ export default function PartsInventory() {
       <div className="flex h-screen flex-col overflow-hidden bg-[#f6f4ef]">
         {/* ── Top bar ──────────────────────────────────────────── */}
         <header className="flex shrink-0 items-center gap-4 border-b border-stone-700 bg-[#1c2a2f] px-6 py-3">
+          <PredictiveAlertBanner />
           <div className="flex items-center gap-3">
             <span className="text-2xl">🚌</span>
             <div>

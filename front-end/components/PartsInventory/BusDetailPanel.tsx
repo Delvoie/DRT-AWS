@@ -9,8 +9,9 @@ import {
   SectionHeader, KpiCard, EmptyState, Button
 } from "@/components/PartsInventory/ui";
 import type { UseBusDetailResult } from "@/hooks/useBusDashboard";
+import { BusPartsHealthPanel } from "../Predictive/BusPartsHealthPanel";
 
-type Tab = "overview" | "parts" | "history";
+type Tab = "overview" | "parts" | "history" | "predictive";
 
 interface Props {
   detail:      UseBusDetailResult;
@@ -38,6 +39,7 @@ export function BusDetailPanel({ detail, onNewEntry, onEditEntry }: Props) {
     { id: "overview", label: "Overview" },
     { id: "parts",    label: `Parts (${bus.serviceSpec?.parts.length ?? 0})` },
     { id: "history",  label: `History (${history.length})` },
+    { id: "predictive", label: "Predictive" }
   ];
 
   return (
@@ -84,6 +86,7 @@ export function BusDetailPanel({ detail, onNewEntry, onEditEntry }: Props) {
       <div className="flex-1 overflow-y-auto p-6">
         {tab === "overview" && <OverviewTab bus={bus} />}
         {tab === "parts"    && <PartsTab bus={bus} />}
+        {tab === "predictive" && <BusPartsHealthPanel bus={bus} />}
         {tab === "history"  && (
           <HistoryTab
             history={history}

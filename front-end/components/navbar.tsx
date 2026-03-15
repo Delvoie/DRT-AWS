@@ -11,6 +11,8 @@ export const navLinks = [
   { href: "/inventory", label: "PartsInventory" },
   //{ href: "/maintenance", label: "Maintenance" },
   { href: "/about", label: "About" },
+  
+  { href: "/predictive", label: "predictive" }
 ];
 
 export default function Navbar() {

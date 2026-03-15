@@ -87,3 +87,9 @@ export {
   getMockBuses,
   computeFleetSummary,
 } from "../mockData";
+
+export type {
+  PartCategory, PartHealthRecord, PartTag, PartTagKey,
+  PredictiveFleetSummary, PredictiveNotification,
+  NotificationPriority, Season, TagColour,
+} from "./predictive";
