@@ -6,7 +6,7 @@
 
 ### The Maintenence system is underequipped and nonpredictive to the Durham Climate.
 
-![[./front-end/public/data/DevSreenshot.png]]
+![Image](./front-end/public/data/DevSreenshot.png)
 
 ## Inspiration
 
