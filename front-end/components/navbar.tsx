@@ -25,11 +25,17 @@ export default function Navbar() {
           {/* Left: Logo + Links */}
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="bg-white rounded-sm px-1.5 py-1 flex items-center justify-center">
-                <span className="flex items-center">
-                    <Image src="/data/assets/drtlogo.svg" alt="DRT Logo" width={56} height={20} className="object-contain" />
-                </span>
-              </div>
+            <div className="bg-white rounded-sm w-[60px] h-[34px] flex items-center justify-center overflow-hidden p-1">
+            <div className="relative w-full h-full">
+                <Image
+                src="/data/assets/drtlogo.svg"
+                alt="DRT Logo"
+                fill
+                className="object-contain"
+                sizes="60px"
+                />
+            </div>
+            </div>
               <span className="text-[13px] font-semibold text-white uppercase tracking-widest">
                 Dashboard
               </span>
