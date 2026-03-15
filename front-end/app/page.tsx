@@ -3,7 +3,7 @@
 // The FleetDashboard itself is a client component; this page stays a server component.
 
 import type { Metadata } from "next";
-import { FleetDashboard } from "@/app/pages/FleetDashboard";
+import FleetDashboard from "./fleet/FleetDashboard";
 
 export const metadata: Metadata = {
   title: "DRT Fleet Risk Tracker",

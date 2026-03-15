@@ -14,7 +14,7 @@ import { Modal }                from "@/components/PartsInventory/Modal";
 type ModalMode = "new" | "edit" | null;
 type AppView   = "dashboard" | "mock";
 
-export function BusDashboard() {
+export default function BusDashboard() {
   const listData       = useBusList();
   const [appView, setAppView]         = useState<AppView>("dashboard");
   const [selectedAlias, setSelectedAlias] = useState<string | null>(null);

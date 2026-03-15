@@ -18,7 +18,7 @@ import { FilterBar } from "@/components/FleetRiskTracker/FilterBar";
 import { RiskTable } from "@/components/FleetRiskTracker/RiskTable";
 import { AssetDrawer } from "@/components/FleetRiskTracker/AssetDrawer";
 
-export function FleetDashboard() {
+export default function FleetDashboard() {
   const { report: serverReport, status, error, refresh } = useFleetReport();
 
   const [uploadedReport] = useState<BusRiskReport | null>(null);
