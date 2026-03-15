@@ -107,7 +107,7 @@ export default function About() {
       <div className="bg-white p-3">
         <Image
           src="/data/assets/QrCode.svg"
-          alt="QR Code — Live Demo"
+          alt="Live Demo"
           width={120}
           height={120}
         />
