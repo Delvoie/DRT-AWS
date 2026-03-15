@@ -10,9 +10,8 @@ export const navLinks = [
  // { href: "/FleetDashboard", label: "FleetDashboard" },
   { href: "/inventory", label: "Parts Inventory" },
   //{ href: "/maintenance", label: "Maintenance" },
-  { href: "/about", label: "About" },
-  
-  { href: "/predictive", label: "predictive" }
+  { href: "/predictive", label: "predictive" },
+  { href: "/about", label: "About" }
 ];
 
 export default function Navbar() {

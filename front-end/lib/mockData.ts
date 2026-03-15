@@ -259,6 +259,7 @@ export function computeFleetSummary(buses: BusRecord[]) {
 // ── Stable seed (deterministic for demos) ────────────────────────────────────
 // Call this once at app startup to get a stable set of buses.
 let _cache: BusRecord[] | null = null;
+if (process.env.NODE_ENV === "development") _cache = null;
 export function getMockBuses(): BusRecord[] {
   if (!_cache) _cache = generateMockBusRecords();
   return _cache;
