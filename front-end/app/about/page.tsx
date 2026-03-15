@@ -84,7 +84,7 @@ export default function About() {
       </h1>
 
       <p className="text-[13px] text-[#555] leading-relaxed max-w-lg">
-        Real-time fleet intelligence dashboard for Durham Region Transit.
+        DRT Fleet Monitor is a real-time fleet intelligence dashboard for Durham Region Transit.
         Track vehicles, monitor maintenance schedules, and manage inventory.
       </p>
 
