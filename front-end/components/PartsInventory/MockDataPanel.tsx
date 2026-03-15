@@ -10,6 +10,7 @@ import { generateMockBusRecords } from "@/lib/mockData";
 import { RiskLevel, type BusRecord } from "@/lib/types";
 import { RiskBadge, ServiceBadge, StatusBadge, Button, SectionHeader } from "@/components/PartsInventory/ui";
 
+// ahh
 export function MockDataPanel() {
   const [buses, setBuses] = useState<BusRecord[]>([]);
   const [generated, setGenerated] = useState(false);
