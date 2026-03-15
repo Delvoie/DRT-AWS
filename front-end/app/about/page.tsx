@@ -18,7 +18,7 @@ const team = [
   {
     initials: "BB",
     name: "Ben Busstuff",
-    role: "Data & Backend",
+    role: "Data-Sciences & Backend",
     tags: ["APIs", "CSV"],
   },
 ];
