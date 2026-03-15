@@ -3,7 +3,7 @@ import { BusRecord } from "@/lib/types";
 import { buildBusHealthRecords } from "./healthEngine";
 import { PartHealthRecord } from "@/lib/types/predictive";
 
-const SNS_TOPIC_ARN = process.env.SNS_TOPIC_ARN || "arn:aws:sns:us-east-1:950724106216:BusFlagAlerts";
+const SNS_TOPIC_ARN = process.env.SNS_TOPIC_ARN || "arn:aws:sns:us-east-1:950724106216:newbus:3274a5ef-f0c3-479a-8ea7-b11f429ba77b";
 const region = process.env.APP_REGION || "us-east-1";
 
 // AWS Credentials provided via the new naming scheme:
