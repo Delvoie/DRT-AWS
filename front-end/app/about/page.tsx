@@ -112,7 +112,7 @@ export default function About() {
           height={120}
         />
       </div>
-      <span className="text-[9px] text-[#333] uppercase tracking-widest">Live demo</span>
+      <span className="text-[9px] text-[#333] uppercase tracking-widest">Qr Code - Live Demo</span>
     </div>
 
   </div>
