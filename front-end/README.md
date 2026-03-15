@@ -1,6 +1,6 @@
-Notes:
+# Notes:
 
-Based on percentage 
+## Based on percentage 
 
 ## Problem Statement: 
 

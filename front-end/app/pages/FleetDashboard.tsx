@@ -21,7 +21,7 @@ import { AssetDrawer } from "@/components/FleetRiskTracker/AssetDrawer";
 export function FleetDashboard() {
   const { report: serverReport, status, error, refresh } = useFleetReport();
 
-  const [uploadedReport, setUploadedReport] = useState<BusRiskReport | null>(null);
+  const [uploadedReport] = useState<BusRiskReport | null>(null);
   const [showUpload, setShowUpload] = useState(false);
 
   const report = uploadedReport ?? serverReport;
@@ -32,6 +32,10 @@ export function FleetDashboard() {
   const { filters, setQuery, setRiskLevel, filtered } = useFleetFilters(
     report?.assets ?? []
   );
+
+  const handleExport = useCallback(() => {
+    if (report) exportReport(report);
+  }, [report]);
 
   const isLoading = status === "loading" && !report;
 
@@ -51,6 +55,15 @@ export function FleetDashboard() {
                     Preventative maintenance risk from current and previous PM snapshots —
                     sorted highest risk first, with delta tracking and data-quality flags.
                   </p>
+                  {uploadedReport && (
+                    <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-2.5 py-0.5 text-[0.68rem] font-medium text-teal-700">
+                      ✓ Using uploaded snapshot
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                    {/* insert any Right side Dashbaord area */}
                 </div>
               </div>
             </header>
