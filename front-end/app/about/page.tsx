@@ -16,8 +16,8 @@ const team = [
     tags: ["Deployment", "Tailwind"],
   },
   {
-    initials: "BB",
-    name: "Ben Busstuff",
+    initials: "BL",
+    name: "Ben Langhammer",
     role: "Data-Sciences & Backend",
     tags: ["APIs", "CSV"],
   },
@@ -33,9 +33,9 @@ const timeline = [
 ];
 
 const stats = [
-  { value: "26", unit: "hrs", label: "Build time" },
+  { value: "24", unit: "hrs", label: "Build time" },
   { value: "3", unit: "devs", label: "Team size" },
-  { value: "40+", unit: "commits", label: "Git commits" },
+  { value: "73", unit: "commits", label: "Git commits" },
   { value: "∞", unit: "cups", label: "Coffee consumed" },
 ];
 
@@ -73,7 +73,7 @@ export default function About() {
           Hackathon 2026
         </span>
         <span className="text-[9px] text-[#333] uppercase tracking-[0.15em]">
-          26-hour sprint
+          24-hour sprint
         </span>
       </div>
 
@@ -122,7 +122,7 @@ export default function About() {
       <section className="border-b border-[#1e1e1e] px-6 py-16 max-w-7xl mx-auto">
 
         <div className="flex items-center gap-4 mb-10">
-          <span className="text-[9px] uppercase text-[#333]">36-hour timeline</span>
+          <span className="text-[9px] uppercase text-[#333]">24-hour timeline</span>
           <div className="flex-1 h-px bg-[#1e1e1e]" />
         </div>
 
