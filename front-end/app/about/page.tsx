@@ -12,8 +12,8 @@ const team = [
   {
     initials: "LD",
     name: "Lucas Delvoie",
-    role: "UI / UX Designer",
-    tags: ["Deployment", "Tailwind"],
+    role: "Front-end & Cloud Developer",
+    tags: ["AWS", "Tailwind"],
   },
   {
     initials: "BL",
@@ -157,7 +157,10 @@ export default function About() {
             { name: "TypeScript", category: "Language" },
             { name: "Tailwind CSS", category: "Styling" },
             { name: "AWS Amplify", category: "Deployment" },
-            { name: "CSV, JSON", category: "Database" },
+            { name: "CSV", category: "Datasets" },
+            { name: "JSON", category: "Datasets" },
+            { name: "Mock Data", category: "Datasets" },
+
           ].map(({ name, category }) => (
             <div key={name} className="bg-[#111] border border-[#1e1e1e] p-4">
               <span className="text-[9px] text-[#333] uppercase">{category}</span>
