@@ -61,44 +61,62 @@ export default function About() {
   return (
     <main className="bg-[#0a0a0a] min-h-screen font-mono text-white">
 
-      {/* Hero */}
-      <section className="border-b border-[#1e1e1e] px-6 py-20 max-w-7xl mx-auto">
-        <div className="flex flex-col gap-6 max-w-2xl">
+{/* Hero */}
+<section className="border-b border-[#1e1e1e] px-6 py-20 max-w-7xl mx-auto">
+  <div className="flex flex-col sm:flex-row items-start justify-between gap-10">
+    
+    {/* Left: existing content */}
+    <div className="flex flex-col gap-6 max-w-2xl">
 
-          <div className="flex items-center gap-3">
-            <span className="text-[9px] text-[#00703C] uppercase tracking-[0.2em] border border-[#1a3d2b] bg-[#0d1f18] px-2.5 py-1">
-              Hackathon 2026
-            </span>
-            <span className="text-[9px] text-[#333] uppercase tracking-[0.15em]">
-              36-hour sprint
-            </span>
+      <div className="flex items-center gap-3">
+        <span className="text-[9px] text-[#00703C] uppercase tracking-[0.2em] border border-[#1a3d2b] bg-[#0d1f18] px-2.5 py-1">
+          Hackathon 2026
+        </span>
+        <span className="text-[9px] text-[#333] uppercase tracking-[0.15em]">
+          36-hour sprint
+        </span>
+      </div>
+
+      <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.1]">
+        DRT Fleet
+        <br />
+        <span className="text-[#00703C]">Monitor</span>
+      </h1>
+
+      <p className="text-[13px] text-[#555] leading-relaxed max-w-lg">
+        Real-time fleet intelligence dashboard for Durham Region Transit.
+        Track vehicles, monitor maintenance schedules, and manage inventory.
+      </p>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {stats.map(({ value, unit, label }) => (
+          <div key={label} className="bg-[#111] border border-[#1e1e1e] p-4">
+            <div className="flex items-baseline gap-1">
+              <span className="text-2xl font-semibold">{value}</span>
+              <span className="text-[10px] text-[#00703C] uppercase">{unit}</span>
+            </div>
+            <span className="text-[9px] text-[#444] uppercase">{label}</span>
           </div>
+        ))}
+      </div>
 
-          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.1]">
-            DRT Fleet
-            <br />
-            <span className="text-[#00703C]">Monitor</span>
-          </h1>
+    </div>
 
-          <p className="text-[13px] text-[#555] leading-relaxed max-w-lg">
-            Real-time fleet intelligence dashboard for Durham Region Transit.
-            Track vehicles, monitor maintenance schedules, and manage inventory.
-          </p>
+    {/* Right: QR Code */}
+    <div className="flex flex-col items-center gap-3 shrink-0">
+      <div className="bg-white p-3">
+        <Image
+          src="/data/assets/QrCode.svg"
+          alt="QR Code — Live Demo"
+          width={120}
+          height={120}
+        />
+      </div>
+      <span className="text-[9px] text-[#333] uppercase tracking-widest">Live demo</span>
+    </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {stats.map(({ value, unit, label }) => (
-              <div key={label} className="bg-[#111] border border-[#1e1e1e] p-4">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-semibold">{value}</span>
-                  <span className="text-[10px] text-[#00703C] uppercase">{unit}</span>
-                </div>
-                <span className="text-[9px] text-[#444] uppercase">{label}</span>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+  </div>
+</section>
 
       {/* Timeline */}
       <section className="border-b border-[#1e1e1e] px-6 py-16 max-w-7xl mx-auto">
