@@ -8,18 +8,48 @@ const team = [
     name: "Julien Mongrain",
     role: "Full-Stack Developer",
     tags: ["Next.js", "TypeScript"],
+    socials: [
+      {
+        name: "GitHub",
+        url: "https://github.com/Jules-programs",
+      },
+      {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/in/julien-mongrain/",
+      },
+    ],
   },
   {
     initials: "LD",
     name: "Lucas Delvoie",
     role: "Front-end & Cloud Developer",
     tags: ["AWS", "Tailwind"],
+    socials: [
+      {
+        name: "GitHub",
+        url: "https://github.com/delvoie",
+      },
+      {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/in/delvoie/",
+      },
+    ],
   },
   {
     initials: "BL",
     name: "Ben Langhammer",
     role: "Data-Sciences & Backend",
     tags: ["APIs", "CSV"],
+    socials: [
+      {
+        name: "GitHub",
+        url: "https://github.com/NobleRhed",
+      },
+      {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/in/benlanghammer/",
+      },
+    ],
   },
 ];
 
@@ -181,7 +211,7 @@ export default function About() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
-          {team.map(({ initials, name, role, tags }) => (
+          {team.map(({ initials, name, role, tags, socials }) => (
             <div
               key={name}
               className="bg-[#111] border border-[#1e1e1e] p-5 flex flex-col gap-4"
@@ -196,6 +226,19 @@ export default function About() {
                   <p className="text-[12px] font-semibold">{name}</p>
                   <p className="text-[10px] text-[#444]">{role}</p>
                 </div>
+              </div>
+              <div>
+                {socials.map(({ name, url }) => (
+                  <a
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[10px] hover:text-[#00703C] transition-colors"
+                  >
+                    {name}
+                  </a>
+                ))}
               </div>
 
               <div className="flex flex-wrap gap-1.5 border-t border-[#1e1e1e] pt-3">
