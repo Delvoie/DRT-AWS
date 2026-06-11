@@ -41,6 +41,7 @@ export interface UseBusListResult {
   setStatusFilter:   (v: MaintenanceStatus | "ALL") => void;
   summary: ReturnType<typeof computeFleetSummary>;
   isLoading: boolean;
+  addBus: (bus: BusRecord) => void;
 }
 
 export function useBusList(): UseBusListResult {
@@ -84,6 +85,7 @@ export function useBusList(): UseBusListResult {
     setStatusFilter:   v => setFilters(f => ({ ...f, status: v })),
     summary,
     isLoading,
+    addBus: useCallback((b: BusRecord) => setBuses(prev => [b, ...prev]), []),
   };
 }
 

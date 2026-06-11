@@ -11,8 +11,9 @@ import { MaintenanceEntryForm } from "@/components/PartsInventory/MaintenanceEnt
 import { MockDataPanel }        from "@/components/PartsInventory/MockDataPanel";
 import { Modal }                from "@/components/PartsInventory/Modal";
 import { PredictiveAlertBanner } from "@/components/Predictive/PredictiveAlertBanner";
+import { AddBusForm }           from "@/components/PartsInventory/AddBusForm";
 
-type ModalMode = "new" | "edit" | null;
+type ModalMode = "new" | "edit" | "addBus" | null;
 type AppView   = "dashboard" | "mock";
 
 export default function PartsInventory() {
@@ -46,6 +47,11 @@ export default function PartsInventory() {
   function handleUpdateSubmit(entry: MaintenanceEntry) {
     if (!editTarget) return;
     detail.updateEntry({ ...entry, id: editTarget.id });
+    closeModal();
+  }
+
+  function handleAddBusSubmit(bus: BusRecord) {
+    listData.addBus(bus);
     closeModal();
   }
 
@@ -84,10 +90,16 @@ export default function PartsInventory() {
             ))}
           </nav>
 
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-4">
             <span className="rounded-full border border-stone-600 bg-stone-700 px-3 py-1 text-xs text-stone-300">
               {listData.buses.length} buses loaded
             </span>
+            <button
+              onClick={() => setModalMode("addBus")}
+              className="rounded-lg bg-teal-600 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-teal-500"
+            >
+              + Add Bus
+            </button>
           </div>
         </header>
 
@@ -150,6 +162,17 @@ export default function PartsInventory() {
           buses={listData.buses}
           mode="edit"
           onSubmit={handleUpdateSubmit}
+          onCancel={closeModal}
+        />
+      </Modal>
+
+      <Modal
+        title="Add New Bus"
+        open={modalMode === "addBus"}
+        onClose={closeModal}
+      >
+        <AddBusForm
+          onSubmit={handleAddBusSubmit}
           onCancel={closeModal}
         />
       </Modal>
